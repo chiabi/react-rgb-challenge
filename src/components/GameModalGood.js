@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-class GameModalGoods extends Component {
+class GameModalGood extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2 class="game-modal__message">THATS RIGHT!</h2>
+        <h2 className="game-modal__message">THATS RIGHT!</h2>
         <div className="game-modal__button">
           <button>NEXT COLOR</button>
         </div>
@@ -13,4 +13,4 @@ class GameModalGoods extends Component {
   }
 }
 
-export default GameModalGoods;
+export default GameModalGood;

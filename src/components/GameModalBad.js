@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-class GameModalGoods extends Component {
+import GameScore from '../components/GameScore'
+
+class GameModalBad extends Component {
   render() {
     const {score} = this.props
     return (
@@ -15,4 +17,4 @@ class GameModalGoods extends Component {
   }
 }
 
-export default GameModalGoods;
+export default GameModalBad;

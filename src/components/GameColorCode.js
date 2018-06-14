@@ -1,46 +1,56 @@
 import React, { Component } from 'react';
 
-const randomNumber = () => Math.floor(Math.random() * 256);
-const randomColorCode = () => {
-  return `rgb(${randomNumber},${randomNumber},${randomNumber})`;
-}
+import ColorCodeItem from '../components/ColorCodeItem';
+
 class GameColorCode extends Component {
   state = {
-    colorCode: ''
+    colorCodes: []
   }
 
-  getColorCode = () => {
-    const colorCodes = [
-      randomColorCode(),
-      randomColorCode(),
-      randomColorCode()
-    ]
-    return colorCodes;
-  }
-
-  updateColorCode = () => {
-    const colorCodes = getColorCode();
+  updateColorCodes = () => {
+    const colorCodes = getColorCodes();
     this.setState({
-      colorCode: colorCodes[Math.floor(Math.random() * 3)]
+      colorCodes,
     })
   }
-
+  
   componentWillMount() {
-    updateColorCode();
+    this.updateColorCodes();
   }
-
+  
   render() {
+    const {colorCodes} = this.state;
+    const randomIndex = Math.floor(Math.random() * 3);
     return (
-      <div class="game__color">
-        <h2>{colorCode}</h2>
+      <div className="game__color">
+        <h2>{colorCodes[randomIndex]}</h2>
         <ul>
-          <li style={colorCodeStyle[0]}></li>
-          <li style={colorCodeStyle[1]}></li>
-          <li style={colorCodeStyle[2]}></li>
+          {colorCodes.map((color, index) => (
+            index === randomIndex ? (
+              <ColorCodeItem key={index} colorCode={color}/>
+            ) : (
+              <ColorCodeItem key={index} colorCode={color}/>
+            ) 
+          ))}
         </ul>
       </div>
     )
   }
+}
+
+function randomNumber() {
+  return Math.floor(Math.random() * 256)
+}
+function randomColorCode() {
+  return `rgb(${randomNumber()},${randomNumber()},${randomNumber()})`;
+}
+function getColorCodes() {
+  const colorCodes = [
+    randomColorCode(),
+    randomColorCode(),
+    randomColorCode()
+  ]
+  return colorCodes;
 }
 
 export default GameColorCode;

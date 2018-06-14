@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class GameScore extends Components {
+class GameScore extends Component {
   render() {
     const {score} = this.props;
     return (

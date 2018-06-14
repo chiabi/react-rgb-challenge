@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import GameScore from '../compoents/GameScore';
-import GameColorCode from '../compoents/GameColorCode';
+import GameScore from '../components/GameScore';
+import GameColorCode from '../components/GameColorCode';
 
 class GameBody extends Component {
   render() {
@@ -15,4 +15,4 @@ class GameBody extends Component {
   }
 }
 
-export default GameModalGoods;
+export default GameBody;
