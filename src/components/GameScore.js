@@ -6,7 +6,7 @@ class GameScore extends Component {
     return (
       <ScoreConsumer>
         {(score) => (
-          <p>SCORE: {score.score}</p>
+          <p className="score">SCORE: {score.score}</p>
         )}
       </ScoreConsumer>
     )
