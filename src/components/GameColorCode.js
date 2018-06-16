@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ColorCodeItem from '../components/ColorCodeItem';
+import ColorCodeList from '../components/ColorCodeList';
 
 class GameColorCode extends Component {
   state = {
@@ -24,15 +24,7 @@ class GameColorCode extends Component {
     return (
       <div className="game__color">
         <h2>{colorCodes[randomIndex]}</h2>
-        <ul>
-          {colorCodes.map((color, index) => (
-            index === randomIndex ? (
-              <ColorCodeItem key={index} colorCode={color}/>
-            ) : (
-              <ColorCodeItem key={index} colorCode={color}/>
-            ) 
-          ))}
-        </ul>
+        <ColorCodeList colorCodes={colorCodes} randomIndex={randomIndex}/>
       </div>
     )
   }

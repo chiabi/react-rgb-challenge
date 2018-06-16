@@ -6,7 +6,7 @@ import GameModal from './components/GameModal';
 class App extends Component {
   state = {
     score: 0,
-    correct: 'good'
+    correct: ''
   }
   render() {
     const {score, correct} = this.state;

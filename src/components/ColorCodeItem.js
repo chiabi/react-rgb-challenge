@@ -7,7 +7,7 @@ class ColorCodeItem extends Component {
       backgroundColor: colorCode
     };
     return (
-      <li style={colorStyle}></li>
+      <li style={colorStyle} className='color-list__item color-list__item--selected'></li>
     )
   }
 }
