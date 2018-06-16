@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 import GameBody from '../components/GameBody';
 
 class Game extends Component {
-
   render() {
-    const {score} = this.props;
     return (
       <div className="game">
         <header className="game__header">
@@ -13,7 +11,7 @@ class Game extends Component {
           <span>RGB</span>
           GUESSING CHALLENGE
         </header>
-        <GameBody score={score}/>
+        <GameBody/>
       </div>
     )
   }
