@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
 
 import Game from './components/Game';
-import GameModal from './components/GameModal';
+import ResultModal from './components/ResultModal';
+
+import { ResultProvider, ResultConsumer } from './contexts/ResultContext';
+import { ScoreProvider } from './contexts/ScoreContext';
+import { ColorCodeProvider } from './contexts/ColorCodeContext';
 
 class App extends Component {
-  state = {
-    score: 0,
-    correct: 'good'
-  }
   render() {
-    const {score, correct} = this.state;
     return (
       <div className="App">
-        <Game score={score}/>
-        {correct ? (
-          <GameModal score={score} correct={correct}/>
-        ) : ''}
+        <ResultProvider>
+          <ScoreProvider>
+            <ColorCodeProvider>
+              <Game/>
+              <ResultConsumer>
+                {(result) => (
+                  result.result ? (
+                    <ResultModal result={result.result} onRestart={result.restart}/>
+                  ) : ''
+                )}
+              </ResultConsumer>
+            </ColorCodeProvider>
+          </ScoreProvider>
+        </ResultProvider>
       </div>
     );
   }
