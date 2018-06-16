@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
 import ColorCodeItem from '../components/ColorCodeItem';
-import { ScoreConsumer } from '../contexts/ScoreContext.js';
-import { ResultConsumer } from '../contexts/ResultContext.js';
+import { ScoreConsumer } from '../contexts/ScoreContext';
+import { ResultConsumer } from '../contexts/ResultContext';
 
 class ColorCodeList extends Component {
+  handleResulstGoods = (resultFunc, scoreFunc) => {
+    resultFunc();
+    scoreFunc();
+  }
   render() {
     const {colorCodes, randomIndex} = this.props;
     return (
@@ -14,11 +18,18 @@ class ColorCodeList extends Component {
             {(result) => (
               <ul className="color-list">
                 {colorCodes.map((color, index) => (
-                  index === randomIndex ? (
-                    <ColorCodeItem key={index} colorCode={color} onShowResult={result.showResultGood}/>
-                  ) : (
-                    <ColorCodeItem key={index} colorCode={color} onShowResult={result.showResultBad}/>
-                  ) 
+                  <ColorCodeItem 
+                    key={index} 
+                    colorCode={color} 
+                    onShowResult={
+                      index === randomIndex ? 
+                      (e => this.handleResulstGoods(
+                        result.showResultGood,
+                        score.upScore
+                      )) : 
+                      result.showResultBad
+                    }
+                  /> 
                 ))}
               </ul>
             )}

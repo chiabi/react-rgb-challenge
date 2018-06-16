@@ -6,10 +6,24 @@ class ScoreProvider extends Component {
   state = {
     score: 0,
   }
+  upScore = () => {
+    this.setState({
+      score: this.state.score + 1
+    })
+  }
+  reset = () => {
+    this.setState({
+      score: 0
+    })
+  }
   render() {
-    const {score} = this.state;
+    const value = {
+      score: this.state.score,
+      upScore: this.upScore,
+      reset: this.reset
+    };
     return (
-      <Provider value={score}>
+      <Provider value={value}>
         {this.props.children}
       </Provider>
     );

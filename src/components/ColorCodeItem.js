@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
 
+import { ColorCodeConsumer } from '../contexts/ColorCodeContext';
+
 class ColorCodeItem extends Component {
-  state = {
-    select: false
-  }
-  handleResult = () => {
-    this.setState({
-      select: true
-    })
+  handleResult = (colorFunc, code) => {
     this.props.onShowResult()
+    colorFunc(code)
   }
+
   render() {
-    const {select} = this.state;
     const {colorCode} = this.props;
     const colorStyle = {
       backgroundColor: colorCode
     };
-    // color-list__item--selected
     return (
-      <li 
-        style={colorStyle} 
-        className={`color-list__item ${select ? 'color-list__item--selected': ''}`} 
-        onClick={this.handleResult}></li>
+      <ColorCodeConsumer>
+        {(value) => (
+          <li 
+            style={colorStyle} 
+            className={`color-list__item ${value.select === colorCode ? 'color-list__item--selected': ''}`} 
+            onClick={e => this.handleResult(value.selectColorCode, colorCode)}></li>
+        )}
+      </ColorCodeConsumer>
     )
   }
 }
