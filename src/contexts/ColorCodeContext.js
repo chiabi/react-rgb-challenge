@@ -25,6 +25,7 @@ class ColorCodeProvider extends Component {
   render() {
     const value={
       colorCodes: this.state.colorCodes,
+      select: this.state.select,
       updateColorCodes: this.updateColorCodes,
       selectColorCode: this.selectColorCode
     }
