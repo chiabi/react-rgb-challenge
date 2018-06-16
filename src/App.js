@@ -3,19 +3,25 @@ import React, { Component } from 'react';
 import Game from './components/Game';
 import GameModal from './components/GameModal';
 
+import { ScoreProvider } from './contexts/ScoreContext.js';
+import { ResultProvider, ResultConsumer } from './contexts/ResultContext.js';
+
 class App extends Component {
-  state = {
-    score: 0,
-    correct: ''
-  }
   render() {
-    const {score, correct} = this.state;
     return (
       <div className="App">
-        <Game score={score}/>
-        {correct ? (
-          <GameModal score={score} correct={correct}/>
-        ) : ''}
+        <ScoreProvider>
+          <ResultProvider>
+            <Game/>
+            <ResultConsumer>
+              {(correct) => (
+                correct ? (
+                  <GameModal correct={correct}/>
+                ) : ''
+              )}
+            </ResultConsumer>
+          </ResultProvider>
+        </ScoreProvider>
       </div>
     );
   }

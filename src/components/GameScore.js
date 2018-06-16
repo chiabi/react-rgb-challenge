@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { ScoreConsumer } from '../contexts/ScoreContext.js';
 
 class GameScore extends Component {
   render() {
-    const {score} = this.props;
     return (
-      <p>SCORE: {score}</p>
+      <ScoreConsumer>
+        {(score) => (
+          <p>SCORE: {score}</p>
+        )}
+      </ScoreConsumer>
     )
   }
 }

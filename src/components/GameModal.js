@@ -5,13 +5,13 @@ import GameModalBad from '../components/GameModalBad'
 
 class GameModal extends Component {
   render() {
-    const {score, correct} = this.props
+    const {correct} = this.props
     return (
       <div className="game-modal">
         {correct === 'good' ? (
-          <GameModalGood/>
+          <GameModalGood />
         ) : (
-          <GameModalBad score={score}/>
+          <GameModalBad />
         )}
       </div>
     )

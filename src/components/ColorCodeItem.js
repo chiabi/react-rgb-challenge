@@ -6,8 +6,9 @@ class ColorCodeItem extends Component {
     const colorStyle = {
       backgroundColor: colorCode
     };
+    // color-list__item--selected
     return (
-      <li style={colorStyle} className='color-list__item color-list__item--selected'></li>
+      <li style={colorStyle} className='color-list__item'></li>
     )
   }
 }

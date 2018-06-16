@@ -5,11 +5,10 @@ import GameColorCode from '../components/GameColorCode';
 
 class GameBody extends Component {
   render() {
-    const {score} = this.props
     return (
       <div className="game__body">
-        <GameScore score={score}/>
-        <GameColorCode/>
+        <GameScore/>
+        <GameColorCode/> 
       </div>
     )
   }
