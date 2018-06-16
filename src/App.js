@@ -14,9 +14,9 @@ class App extends Component {
           <ResultProvider>
             <Game/>
             <ResultConsumer>
-              {(correct) => (
-                correct ? (
-                  <GameModal correct={correct}/>
+              {(result) => (
+                result.result ? (
+                  <GameModal result={result.result}/>
                 ) : ''
               )}
             </ResultConsumer>

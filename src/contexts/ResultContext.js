@@ -4,12 +4,32 @@ const {Provider, Consumer} = createContext();
 
 class ResultProvider extends Component {
   state = {
-    correct: ''
+    result: ''
+  }
+  showResultGood = () => {
+    this.setState({
+      result: 'good'
+    })
+  }
+  showResultBad = () => {
+    this.setState({
+      result: 'bad'
+    })
+  }
+  restart = () => {
+    this.setState({
+      result: ''
+    })
   }
   render() {
-    const {correct} = this.state;
+    const value = {
+      result: this.state.result, 
+      showResultGood: this.showResultGood,
+      showResultBad: this.showResultBad,
+      restart: this.restart
+    };
     return (
-      <Provider value={correct}>
+      <Provider value={value}>
         {this.props.children}
       </Provider>
     );
