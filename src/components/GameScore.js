@@ -1,16 +1,7 @@
-import React, { Component } from 'react';
-import { ScoreConsumer } from '../contexts/ScoreContext';
+import React from 'react';
 
-class GameScore extends Component {
-  render() {
-    return (
-      <ScoreConsumer>
-        {(score) => (
-          <p className="score">SCORE: {score.score}</p>
-        )}
-      </ScoreConsumer>
-    )
-  }
-}
+const GameScore = ({score}) => (
+  <p className="score">SCORE: {score}</p>
+)
 
-export default GameScore;
+export default GameScore

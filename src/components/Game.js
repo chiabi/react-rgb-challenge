@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import GameBody from '../components/GameBody';
+import GameBodyContainer from '../containers/GameBodyContainer';
 
 class Game extends Component {
   render() {
@@ -11,7 +11,7 @@ class Game extends Component {
           <span>RGB</span>
           GUESSING CHALLENGE
         </header>
-        <GameBody/>
+        <GameBodyContainer/>
       </div>
     )
   }

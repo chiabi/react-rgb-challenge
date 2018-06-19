@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import ColorCodeList from '../components/ColorCodeList';
+import ColorCodeListContainer from '../containers/ColorCodeListContainer';
 
 class GameColorCode extends Component {
+  
   componentDidMount() {
     this.props.onUpdateColorCodes();
   }
@@ -13,10 +14,7 @@ class GameColorCode extends Component {
     return (
       <div className="game__color">
         <h2>{colorCodes[randomIndex]}</h2>
-        <ColorCodeList 
-          colorCodes={colorCodes} 
-          randomIndex={randomIndex}
-        />
+        <ColorCodeListContainer randomIndex={randomIndex}/>
       </div>
     )
   }

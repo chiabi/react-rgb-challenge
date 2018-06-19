@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
 class ResultModalGood extends Component {
+
   handleGameNext = () => {
     this.props.onUpdateColorCodes()
     this.props.onRestart()
   }
+  
   render() {
     return (
       <React.Fragment>

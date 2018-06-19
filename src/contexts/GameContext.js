@@ -1,11 +1,12 @@
 import React, { Component, createContext } from 'react';
 
-const { Provider, Consumer } = createContext()
-
-class ColorCodeProvider extends Component {
+const { Provider, Consumer } = createContext();
+class GameProvider extends Component {
   state = {
     colorCodes: [],
-    select: ''
+    select: '',
+    result: '',  
+    score: 0,
   }
 
   updateColorCodes = () => {
@@ -21,28 +22,53 @@ class ColorCodeProvider extends Component {
       select: colorCode
     })
   }
-  
+
+  updateResult = result => {
+    this.setState({
+      result
+    })
+  }
+
+  increaseScore = () => {
+    this.setState({
+      score :this.state.score + 1
+    })
+  }
+
+  resetScore = () => {
+    this.setState({
+      score: 0
+    })
+  }
+
   render() {
-    const value={
+    const value = {
       colorCodes: this.state.colorCodes,
+      score: this.state.score,
       select: this.state.select,
+      result: this.state.result,
       updateColorCodes: this.updateColorCodes,
-      selectColorCode: this.selectColorCode
+      selectColorCode: this.selectColorCode,
+      updateResult: this.updateResult,
+      increaseScore: this.increaseScore,
+      resetScore: this.resetScore,
     }
     return (
       <Provider value={value}>
         {this.props.children}
       </Provider>
-    )
+    );
   }
 }
 
 function randomNumber() {
   return Math.floor(Math.random() * 256)
 }
+
 function randomColorCode() {
   return `rgb(${randomNumber()},${randomNumber()},${randomNumber()})`;
 }
+
 function getColorCodes() {
   const colorCodes = [
     randomColorCode(),
@@ -52,4 +78,4 @@ function getColorCodes() {
   return colorCodes;
 }
 
-export { ColorCodeProvider, Consumer as ColorCodeConsumer };
+export { GameProvider, Consumer as GameConsumer };
