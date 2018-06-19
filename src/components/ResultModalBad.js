@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 
-import GameScore from '../components/GameScore';
-import { ScoreConsumer } from '../contexts/ScoreContext';
+import GameScoreContainer from '../containers/GameScoreContainer';
 
 class ResultModalBad extends Component {
-  handleGameRestart = (scoreFunc) => {
+
+  handleGameRestart = () => {
     this.props.onUpdateColorCodes()
     this.props.onRestart()
-    scoreFunc()
+    this.props.onReset()
   }
+  
   render() {
     return (
       <React.Fragment>
         <h2 className="game-modal__message">TOO BAD :(</h2>
-        <GameScore/>
+        <GameScoreContainer/>
         <div className="game-modal__button">
-          <ScoreConsumer>
-            {(score) => (
-              <button onClick={e => this.handleGameRestart(score.reset)}>PLAY AGAIN</button>
-            )}
-          </ScoreConsumer>
+          <button onClick={this.handleGameRestart}>PLAY AGAIN</button>
         </div>
       </React.Fragment>
     )

@@ -1,41 +1,37 @@
 import React, { Component } from 'react';
 
 import ColorCodeItem from '../components/ColorCodeItem';
-import { ScoreConsumer } from '../contexts/ScoreContext';
-import { ResultConsumer } from '../contexts/ResultContext';
 
 class ColorCodeList extends Component {
-  handleResulstGoods = (resultFunc, scoreFunc) => {
-    resultFunc();
-    scoreFunc();
+
+  handleResultGood = () => {
+    this.props.onUpdateResult('good')
+    this.props.onIncreaseScore()
   }
+  handleResultBad = () => {
+    this.props.onUpdateResult('bad')
+  }
+  
   render() {
-    const {colorCodes, randomIndex} = this.props;
+    const {
+      colorCodes,
+      randomIndex,
+      select,
+      onSelectColorCode
+    } = this.props;
+    
     return (
-      <ScoreConsumer>
-        {(score) => (
-          <ResultConsumer>
-            {(result) => (
-              <ul className="color-list">
-                {colorCodes.map((color, index) => (
-                  <ColorCodeItem 
-                    key={index} 
-                    colorCode={color} 
-                    onShowResult={
-                      index === randomIndex ? 
-                      (e => this.handleResulstGoods(
-                        result.showResultGood,
-                        score.upScore
-                      )) : 
-                      result.showResultBad
-                    }
-                  /> 
-                ))}
-              </ul>
-            )}
-          </ResultConsumer>
-        )}
-      </ScoreConsumer>
+      <ul className="color-list">
+        {colorCodes.map((color, index) => (
+          <ColorCodeItem 
+            key={index} 
+            colorCode={color} 
+            select={select}
+            onShowResult={index === randomIndex ? this.handleResultGood : this.handleResultBad}
+            onSelectColorCode={onSelectColorCode}
+          /> 
+        ))}
+      </ul>
     );
   }
 }
